@@ -6,7 +6,7 @@ let divide = (num1, num2) => num1 / num2;
 function operator(operator, num1, num2){
     return operator(num1, num2);
 }
-
+const displayValue = document.querySelector('#displayValue');
 const num1 = document.querySelector('.num1');
 const num2 = document.querySelector('.num2');
 const num3 = document.querySelector('.num3');
@@ -22,4 +22,5 @@ const numMultiply = document.querySelector('.numMultiply');
 const numDivide = document.querySelector('.numDivide');
 const numEquals = document.querySelector('.numEquals');
 const numDel = document.querySelector('.numDel');
+
 
