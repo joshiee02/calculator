@@ -46,31 +46,43 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid green;
     height: 99vh;
 }
 #calculator{
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
     width: 15%;
     height: 45%;
-    background-color: darkgray;
+    border-radius: 12px;
+    background-color: #393E46;
 }
 #calculatorScreen{
-    padding: 12%;
-    background-color: black;
+    display: flex;
+    justify-content: flex-end;
+    height: 11%;
+    font-size: 115%;
+    padding: 5%;
+    background-color: #222831;
     margin: 4%;
+    border-radius: 8px;
+}
+#valueScreen{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: white;
+    border: 1px solid red;
+    padding: 3%;
 }
 hr{
     margin: auto;
     width: 99%;
-    border-color: black;
+    border-color: #222831;
     /*change the hr line to smaller than 1px*/
 }
 #calculatorButtons{
-    border: 1px solid yellow;
-    background-color: grey;
+    background-color: #393E46;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -80,18 +92,28 @@ hr{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid red;
     height: 100%;
     flex-direction: row;
 }
-.buttons{
-    border: 1px solid red;
-    border-radius: 50%;
-    padding: 9%;
-    width: 3%;
-    height: 10%;
-}
-.del{
+button{
     display: flex;
     justify-content: center;
+    align-items:center;
+    background-color: #222831;
+    border-style: none;
+    border-radius: 50%;
+    color: #EEEEEE;
+    font-size: 115%;
+    padding: 10%;
+    width: 3%;
+    height: 10%;
+
+}
+.numDivide, .numMultiply, .numSubtract, .numAddition, .numEquals {
+    background-color: white;
+    color: #222831;
+}
+.numDel{
+    background-color: #FFD369;
+    color: #222831;
 }
