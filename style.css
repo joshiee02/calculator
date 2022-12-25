@@ -67,12 +67,11 @@ table {
     margin: 4%;
     border-radius: 8px;
 }
-#valueScreen{
+#displayValue{
     display: flex;
     justify-content: flex-end;
     align-items: center;
     color: white;
-    border: 1px solid red;
     padding: 3%;
 }
 hr{
