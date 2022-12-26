@@ -108,7 +108,7 @@ button{
     height: 10%;
 
 }
-.numDivide, .numMultiply, .numSubtract, .numAddition, .numEquals {
+.operatorButtons{
     background-color: white;
     color: #222831;
 }
