@@ -1,10 +1,10 @@
-let add = (num1, num2) => num1 + num2;
-let subtract = (num1, num2) => num1 - num2;
-let multiply = (num1, num2) => num1 * num2;
-let divide = (num1, num2) => num1 / num2;
+let add = (x, y) => x + y;
+let subtract = (x, y) => x - y;
+let multiply = (x, y) => x * y;
+let divide = (x, y) => x / y;
 
-function operator(calc){
-    return +calc
+function operator(calc, firstNum, secondNum){
+    return calc(firstNum, secondNum);
 }
 let currentValue = '';
 
