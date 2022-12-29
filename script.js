@@ -23,7 +23,7 @@ let calcValues = {
 };
 
 let calcResult = 0;
-function calc(operator, firstNum, secondNum){   //use to calculate using the values and operators set by the user
+function calc(operator, firstNum, secondNum){   //use to calculate using the values and operators set by the user   
     calcResult = operator(firstNum, secondNum); //also shows the calculated result in the screen
     displayValue = calcResult;
     display.textContent = displayValue;
@@ -52,7 +52,9 @@ operatorButtons.forEach(operator => operator.onclick = () => { //a conveyor type
 
 const numEquals = document.querySelector('.numEquals');
 numEquals.onclick = () => {
-    if(calcResult){
+    if((calcValues.firstValue == 0 || calcValues.secondValue == 0) & calcValues.operator == divide) {
+        display.textContent = 'Error, cannot divide by 0';
+    }else if(calcResult){
         calcOperators.shift();
         calc(calcOperators[0], calcResult, +calcValues.secondValue);
     }else calc(calcOperators[0], +calcValues.firstValue, +calcValues.secondValue);
