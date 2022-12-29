@@ -4,55 +4,55 @@ let multiply = (x, y) => x * y;
 let divide = (x, y) => x / y;
 
 let calcValues = {
-    firstValue: '',
+    firstValue: undefined,
     operator: '',
-    secondValue: '',
+    secondValue: undefined,
 }
 
+
+const display = document.querySelector('#displayValue');
 let displayValue = '';
+
 let calcResult = 0;
-
-
 function calc(operator, firstNum, secondNum){
     calcResult = operator(firstNum, secondNum);
     displayValue = calcResult;
     display.textContent = displayValue;
 }
 
-const display = document.querySelector('#displayValue');
 const numButtons = document.querySelectorAll('.buttons');
     numButtons.forEach(button => button.onclick = () => {
         displayValue += button.value;
         display.textContent = displayValue;
-        if(calcValues.operator){
-            calcValues.secondValue = displayValue;
-        }else calcValues.firstValue = displayValue;
+
+        calcValues.operator ? calcValues.secondValue = displayValue :  calcValues.firstValue = displayValue;
+        
     });
 
-
+let calcOperators = [];
 const operatorButtons = document.querySelectorAll('.operatorButtons')
-    operatorButtons.forEach(operator => operator.onclick = () => {
-    if(calcValues.operator && calcValues.firstValue && calcValues.secondValue){
-        if(calcResult){
-            calc(calcValues.operator, calcResult, calcValues.secondValue);
-        }else calc(calcValues.operator, calcValues.firstValue, calcValues.secondValue)
-    }
-    else if(!calcValues.operator){
-        calcValues.operator = operator.value;
-    }else{
-        calcValues.operator = undefined;
-        calcValues.operator = operator.value;
-    }
-    displayValue = '';
+operatorButtons.forEach(operator => operator.onclick = () => {
+
+calcValues.operator = (operator.value == '+') ? add:
+    (operator.value == '-') ? subtract:
+    (operator.value == '*') ? multiply:
+    divide;
+calcOperators.push(calcValues.operator);
+if(calcValues.operator && calcValues.firstValue && calcValues.secondValue){
+    if(calcResult){
+        calcOperators.shift();
+        calc(calcOperators[0], calcResult, +calcValues.secondValue);
+    }else calc(calcOperators[0], +calcValues.firstValue, +calcValues.secondValue); 
+}
+displayValue = '';
 });
 
 const numEquals = document.querySelector('.numEquals');
     numEquals.onclick = () => {
         if(calcResult){
-            calc(calcValues.operator, calcResult, +secondValue);
-        }else calc(calcValues.operator, calcValues.firstValue, calcValues.secondValue)
+            calc(calcValues.operator, calcResult, +calcValues.secondValue);
+        }else calc(calcValues.operator, +calcValues.firstValue, +calcValues.secondValue)
     };
-
 
 const numDel = document.querySelector('.numDel');
     numDel.onclick = () => {
@@ -60,12 +60,11 @@ const numDel = document.querySelector('.numDel');
         //reset 
         displayValue = '';
         display.textContent = displayValue;
-        firstValue = '';
-        secondValue = '';
-        operatorValue = '';
+        calcValues.firstValue = undefined;
+        calcValues.secondValue = undefined;
+        calcValues.operator = '';
         calcResult = 0;
+        calcOperators = [];
 
     };
-
-
 
